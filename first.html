@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Assignment</title>
+
+        <style>
+        .section1{
+            width: 60%;
+            margin: auto;
+            padding: 15px;
+            text-align: left;
+        }
+        #result {
+            width: 60%;
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            display: none;
+        }
+        </style>
+    </head>
+
+    <body>
+      <div class="section1">
+        <form>
+            <fieldset>
+                <legend>Patient Information</legend>
+                <label>Name: </label>
+                <input type="text" id="name">
+                <br><br>
+
+                <label>Address: </label>
+                <textarea id="address"></textarea>
+                <br><br>
+
+                <label>Birth Date </label>
+                <input type="date" id="date">
+                <br><br>
+
+                <label>Age: </label>
+                <input type="text" id="age">
+                <br><br>
+                
+                <label id="gender">Gender: </label>
+                <input type="radio" name="gender" value="male">MALE
+                <input type="radio" name="gender" value="female">FEMALE<br><br>
+
+                <label type="option" id="diseaseLabel">Disease: </label>
+                <select id="disease" Name="category">
+                    <option value="">Select</option>
+                    <option value="fever">Fever</option>
+                    <option value="denque">Denque</option>
+                </select>
+                <br><br>
+
+                <label>E-mail: </label>
+                <input type="text" id="email">
+                <br><br>
+
+                <label>PIN: </label>
+                <input type="password" id="pin">
+                <br><br>
+                <input type="button" id="button1" onclick="nameRegister()" value="Submit">
+            </fieldset>
+        </form>
+     </div>
+
+           <div id="result">
+               <h3>Submitted Patient Details:</h3>
+               <p><strong>Name:</strong> <span id="resName"></span></p>
+               <p><strong>Address:</strong> <span id="resAddress"></span></p>
+               <p><strong>Birth Date:</strong> <span id="resDate"></span></p>
+               <p><strong>Age:</strong> <span id="resAge"></span></p>
+               <p><strong>Gender:</strong> <span id="resGender"></span></p>
+               <p><strong>Disease:</strong> <span id="resDisease"></span></p>
+               <p><strong>E-mail:</strong> <span id="resEmail"></span></p>
+               <p><strong>PIN:</strong> <span id="resPin"></span></p>
+           </div>
+
+        <script>
+
+            function nameRegister() {
+
+                let name = document.getElementById("name").value.trim();
+                let address = document.getElementById("address").value.trim();
+                let date = document.getElementById("date").value;
+                let age = document.getElementById("age").value.trim();
+                let genderElement = document.querySelector('input[name="gender"]:checked');
+                let email = document.getElementById("email").value.trim();
+                let pin = document.getElementById("pin").value.trim();
+                let disease = document.getElementById("disease").value;
+
+                if(name == "") {
+                    alert("Please enter your name");
+                    return;
+                }
+                if(address == "") {
+                    alert("Please enter your Address");
+                    return;
+                }
+                if(date == "") {
+                    alert("Please enter your Birth Date");
+                    return;
+                }
+                if(age == "") {
+                    alert("Please enter your Age");
+                    return;
+                }
+                if(!genderElement) {
+                    alert("Please select your Gender");
+                    return;
+                }
+                if(disease == "" || disease == "Select ") {
+                    alert("Please enter your Disease");
+                    return;
+                }
+                if(email == "") {
+                    alert("Please enter your Email Address");
+                    return;
+                }
+                if(pin == "") {
+                    alert("Please enter your PIN");
+                    return;
+                }
+
+                document.getElementById("resName").innerText = name;
+                document.getElementById("resAddress").innerText = address;
+                document.getElementById("resDate").innerText = date;
+                document.getElementById("resAge").innerText = age;
+                document.getElementById("resGender").innerText = genderElement.value;
+                document.getElementById("resDisease").innerText = disease;
+                document.getElementById("resEmail").innerText = email;
+                document.getElementById("resPin").innerText = pin;
+
+                document.getElementById("result").style.display = "block";
+            }
+        </script>
+
+    </body>
+
+</html>
